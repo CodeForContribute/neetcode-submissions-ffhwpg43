@@ -1,0 +1,15 @@
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+        List<Integer>stoneList = new ArrayList();
+        for(int stone : stones)stoneList.add(stone);
+        while(stoneList.size() > 1){
+            Collections.sort(stoneList);
+            int n = stoneList.size();
+            int cur = stoneList.remove(n-1) - stoneList.remove(n-2);
+            if(cur != 0){
+                stoneList.add(cur);
+            }
+        }
+        return stoneList.isEmpty() ? 0: stoneList.get(0);
+    }
+}
